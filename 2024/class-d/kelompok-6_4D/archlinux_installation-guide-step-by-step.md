@@ -161,7 +161,26 @@ kita akan menginstall pipewire untuk audio, thunar atau dolphin untuk file manag
 tanpa pipewire audio tidak akan berjalan, tanpa dolphin atau thunar kita tidak bisa akses ke file manager, tanpa wofi atau rofi tidak ada exec ke menu atau search bar 
 
 install semuanya menggunakan
->__pacman -S plasma kitty dolphin pipewire pipewire-jack dolphin wofi tt-jetbrains-mono-nerds firefox-developer-edition__ <br> 
+>__pacman -S plasma kitty dolphin pipewire pipewire-jack dolphin wofi ttf-jetbrains-mono-nerds firefox-developer-edition__ <br>
+
+__cd boot/ untuk pindah ke direktori boot__
+
+## bootloader 
+menggunakan GRUB sebagai bootloader dan mendownload efibootmgr untuk manage uefi 
+> __sudo pacman -S efibootmgr__ //fungsinya untuk mendaftarkan GRUB ke efi bootmgr <br> 
+> __grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB__ // untuk menginstall GRUB ke efi dan direktori sebagai bootloader <br>
+> __grub-mkconfig -o /boot/grub/grub.cfg__ // untuk membuat configurasi dari GRUB <br> 
+
+## mkinitcpio 
+> __mkinitcpio -P__ <br>  
+membuat image boot linux
+
+exit untuk keluar dari __arch-chroot /mnt__
+
+umount -R /mnt // untuk men unmount dari mount point agar tidak terjadi error atau crash yang di inginkan setelah reboot 
+reboot dan cabut USB flashdisk agar tidak boot kembali ke UEFI boot environment 
+
+#Instalasi linux selesai 
 
 
 
