@@ -1,6 +1,15 @@
 konek internet
-
-timedatctl
+iwctl
+```
+iwctl
+```
+```
+device list
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect NamaWifi
+```
+timedatectl
 
 partisi
 
@@ -36,10 +45,11 @@ masuk ke folder
 ```
 nano /etc/locale.gen
 ```
-hapus # di 
+dibuka komentarnya 
 ```
-LANG=en_US.UTF-8
+en_US.UTF-8 UTF-8
 ```
+jalankan
 ```
 locale -gen
 ```
@@ -51,6 +61,10 @@ nano /etc/locale.gen
 ketik
 ```
 LANG=en_US.UTF-8
+```
+jalankan
+```
+locale -gen
 ```
 hostname
 ```
