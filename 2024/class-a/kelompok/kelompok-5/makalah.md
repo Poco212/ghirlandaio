@@ -144,6 +144,8 @@ Untuk sistem UEFI, pasang partisi ke ```/mnt/boot```:
 
 **3.2 Membuat Fstab**
 
+
+
 **3.3 Masuk ke Sistem Baru (Chroot)**
 
 **3.4 Mengatur Timezone**
