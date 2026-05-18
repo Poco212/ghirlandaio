@@ -26,7 +26,7 @@ Lalu, klik yang muncul ke dua dalam baris, yaitu __archlinux-2026.05.01-x86_64.i
 
 ---
 
-Setelah file Arch Iso berhasil diunduh, langkah berikutnya adalah mengunduh __Rufus__. ketik __rufus.ie/id/__ untuk mengakses situs Rufus, lalu klik unduh untuk melakaukan pengunduhan.
+Setelah file Arch Iso berhasil diunduh, langkah berikutnya adalah mengunduh __Rufus__. ketik __rufus.ie/id/__ untuk mengakses situs Rufus berbahasa indonesia, lalu klik unduh untuk melakaukan pengunduhan.
 
 ---
 
@@ -42,23 +42,36 @@ https://github.com/user-attachments/assets/04ccc2bb-7ae9-4079-8077-a58033916058
 
 ---
 
-## M
+## Memulai
 
-Langkah awal ialah dengan cara memasukkan flashdisk ke laptop, lalu pencet tombol select dan pilih archiso yang telah didownload, untuk partition scheme, biasanya laptop baru menggunakan gpt.
+Tahap awal dimulai dengan memasukkan flashdisk ke laptop, kemudian klik tombol __Select__ dan pilih fle Archiso yang sudah diunduh sebelumnya. Untuk bagian __Partition Scheme__, laptop keluaran baru umumnya sudah menggunakan __GPT__.  
 
+__Diperlukan:__
 - **USB Drive:** Minimal kapasitas 2GB (direkomendasikan 4GB atau lebih).
-- **Peringatan:** Proses ini akan menghapus **seluruh data** di dalam USB drive.
+
+__Perhatian!__
+- Proses ini akan menghapus **SELURUH DATA** di dalam USB drive.
 
 <img width="1599" height="899" alt="image" src="https://github.com/user-attachments/assets/c6cdf2fa-bfdc-4ba4-9240-5993030daca3" />
-Setelah start pencet yang bawah
 
+---
+
+Setelah mengklik start akan muncul tampilan seperti ini, klik bawah yaitu __Write in DD Image Mode__. 
+
+---
 
 <img width="1599" height="899" alt="image" src="https://github.com/user-attachments/assets/7f5258eb-f462-4b5b-a00c-c5013b2595c8" />
-Ok, untuk menaruh archisonya. (Gunakan flashdisk yang tidak terpakai karenaakan menghapus seluruh file)
 
-Close saja kalau sudah
+---
+
+Setelah muncul seperti, lanjut klik __OK__ untuk menaruh Archiso. (Gunakan flashdisk yang dibutuhkan, disarankan flashdisk lama yang sudah tidak terpakai lagi atau bisa saja menggunakan flashdisk baru)
+
+
+Jika sudah selesai proses sebelumnya, klik __close__.
+
 
 Untuk partisi cek disk management (windows + x)
+
 
 Cek berapa partisi yang kosong
 
