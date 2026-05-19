@@ -124,17 +124,17 @@ EDITOR=nvim visudo /etc/sudoers.d/administrator <br>
 masukan user ALL=(ALL:ALL) ALL <br>
 
 ## install DE dekstop environment dan etentital dependencies or packages 
-sudo pacman -S plasma kitty dolphin pipewire networkmanager sddm 
+__sudo pacman -S plasma kitty dolphin pipewire networkmanager sddm__ 
 
-systemctl enable NetworkManager.service <br>
+__systemctl enable NetworkManager.service__ <br>
 ini untuk wifi
 
-systemctl enable sddm.service <br> 
+__systemctl enable sddm.service__ <br> 
 ini untuk login 
 
 ## untuk os prober untuk dual boot windows 
 
-nvim /etc/default/grub
+__nvim /etc/default/grub__
 
 uncoment GRUB_DISABLE_OS_PROBER=false 
 
@@ -149,11 +149,13 @@ adalah bentuk izin pada sistem, sedangkan pacman berfungsi untuk mengambil depen
 
 cd boot/
 
-sudo pacman -S efibootmgr grub os-prober
+__sudo pacman -S efibootmgr grub os-prober__
 
-efibootmgr menyediakan tampilan environment boot dari grub, grub itu semacam alat untuk menjalankan booting dan os prober itu alat untuk mendeteksi windows 
+efibootmgr menyediakan tampilan environment boot dari grub, grub itu semacam alat untuk menjalankan booting dan os prober itu alat untuk mendeteksi windows
 
-grub-install --target=x86_64-efi --efi-directory=/boot --efi-bootloader-id=Arch-Linux 
+__nvim /etc/default/grub__
+
+__grub-install --target=x86_64-efi --efi-directory=/boot --efi-bootloader-id=Arch-Linux__ 
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
