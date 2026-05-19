@@ -2,8 +2,14 @@
 ## Persiapan sebelum instalasi
 1. Download ISO arch linux pada link berikut ini: https://archlinux.org/download/ , cari mirror terdekat yaitu Indonesia lalu pilih yang berukuran sekitar 1G
 2. Gunakan aplikasi seperti rufus atau balena etcher untuk melakukan flash USB, ISO arch linux akan ditulis pada flashdisk agar jadi live usb. Pastikan USB yang di flash memimiliki kapasitas setidaknya 8GB
-3. Lakukan disk partisi melalui Disk management, dapat diakses melalui mengklik kanan mouse pada windows atau menggunakan aplikasi mini partition wizard tool yang lebih mudah
 
+<img width="997" height="637" alt="image" src="https://github.com/user-attachments/assets/3447d3f0-3482-457e-b0c4-a3306bfcc62c" />
+di balena etcher masukan file ISO Arch linux, pilih flashdisk lalu tinggal tekan flash
+
+3. Lakukan disk partisi melalui Disk management, dapat diakses melalui mengklik kanan mouse pada windows atau menggunakan aplikasi mini partition wizard tool yang lebih mudah
+<img width="1272" height="890" alt="image" src="https://github.com/user-attachments/assets/8279b91c-6a4a-4c74-92f4-8b8919f2d38a" />
+* pilih disk yang mau diambil disknya
+* misalnya saya disk D, klik kanan pada disk d lalu split atur berapa giga yang kalian inginkan untuk arch linux lalu klik apply lalu restart
 
 ## Boot ke Live Environment
 1. Colokan flashdisk yang sudah di flash burnt. restart laptop lalu masuk ke mode BIOS untuk laptop saya menekan f2
