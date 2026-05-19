@@ -94,9 +94,9 @@ Langkah selanjutnya adalah mengecek disk yang akan digunakan untuk instalasi Arc
 Dari hasil pengecekan tersebut terlihat disk utama yang digunakan adalah /dev/nvme0n1 
 
 ### Partisi Disk 
-Setelah mengetahui disk yang digunakan, langkah berikutnya adalah melakukan partisi menggunakan fdisk. 
+Setelah mengetahui disk yang digunakan, langkah berikutnya adalah melakukan partisi menggunakan cfdisk. 
 
-`fdisk /dev/nvme0n1`
+`cfdisk /dev/nvme0n1`
 
 Struktur partisi yang disarankan: 
 EFI = boot
@@ -112,7 +112,7 @@ Bisa dilihat struktur dibawah ini
 ![partisilagi](https://cdn.corenexis.com/files/c/7289618720.jpg) 
 
 
-Di dalam fdisk, partisi dibuat pada ruang kosong (unallocated) yang sebelumnya sudah disiapkan dari Windows melalui shrink volume. Partisi yang dibuat terdiri dari partisi EFI (boot), swap, dan root. Didapatkan partisi EFI berada di /dev/nvme0n1p6, partisi swap berada di /dev/nvme0n1p7, dan partisi root berada di /dev/nvme0n1p8. Nomor partisi yang tidak berurutan ini terjadi karena pada SSD sudah terdapat beberapa partisi bawaan Windows seperti recovery atau system reserved, sehingga partisi Linux dibuat pada nomor yang tersedia berikutnya. 
+Di dalam cfdisk, partisi dibuat pada ruang kosong (unallocated) yang sebelumnya sudah disiapkan dari Windows melalui shrink volume. Partisi yang dibuat terdiri dari partisi EFI (boot), swap, dan root. Didapatkan partisi EFI berada di /dev/nvme0n1p6, partisi swap berada di /dev/nvme0n1p7, dan partisi root berada di /dev/nvme0n1p8. Nomor partisi yang tidak berurutan ini terjadi karena pada SSD sudah terdapat beberapa partisi bawaan Windows seperti recovery atau system reserved, sehingga partisi Linux dibuat pada nomor yang tersedia berikutnya. 
 
 ### Format partisi Root, Swap dan EFI 
 
@@ -135,21 +135,21 @@ EFI partition harus menggunakan FAT32
 Setelah semua partisi diformat, langkah selanjutnya adalah melakukan mount agar sistem tahu lokasi instalasi. Partisi root dipasang ke direktori /mnt 
  
 **Mount root**
-`mount /dev/root_partition /mnt`
+`mount /dev/[root_partition] /mnt` 
 
 Setelah itu partisi EFI dipasang ke /mnt/boot 
 
 **Mount EFI** 
-`mount --mkdir /dev/efi_system_partition /mnt/boot` 
+`mount --mkdir /dev/[efi_system_partition] /mnt/boot` 
 
 ### Instalasi Sistem Dasar 
 Setelah mount kita masuk ke tahap instalasi sistem dasar yaitu 
-`Pacstrap pacstrap -K /mnt base linux linux-firmware base base-devel neovim`
+` pacstrap -K /mnt base linux linux-firmware base base-devel neovim`
 
 penjelasan : 
 base → paket inti sistem 
 linux → kernel Linux
-linux-firmware → firmware hardware
+linux-firmware → firmware hardware 
 ### Membuat fstab
 Setelah sistem dasar sudah terinstal, selanjutnya adalah membuat fstab untuk menentukan partisi mana yang otomatis di mount saat boot
 `genfstab -U /mnt >> /mnt/etc/fstab`
@@ -161,9 +161,9 @@ Setelah fstab dibuat, langkah selanjutnya adalah masuk ke sistem Arch Linux yang
 
 
 ### Mengatur Timezone (set waktu)
-`ln -sf /usr/share/zoneinfo/Area/Location /etc/localtime`
+`ln -sf /usr/share/zoneinfo/[Area]/[Location] /etc/localtime`
 ### Sinkronkan hardware clock: 
-`Hwclock --systohc`
+`hwclock --systohc`
 
 ### Localization 
 Generate local: locale-gen
@@ -173,7 +173,8 @@ digunakan untuk memproses data bahasa yang dipilih
 ### Hostname 
 Hostname merupakan nama komputer `nvim /etc/hostname`
 Klik i masukan nama komputer, klik esc klik :wq 
-
+### User
+untuk menambahkan user command : `useradd -m -G wheel -s /bin/bash [nama user]` usahan menggunakan huruf kecil dan hanya satu kata, lalu masukan password command `passwd ` [nama user] lalu unntuk mengecek berhasil atau tidak untuk user command `su [nama user]`
 ### Generate Initramfs 
 `mkinitcpio -P`
 Penjelasan 
