@@ -488,6 +488,7 @@ LANG=en_US.UTF-8
 
 Setelah sudah terisi, tekan key __escape__ pada keyboard dan ketik `:wq`
 
+---
 
 # Hostname
 
