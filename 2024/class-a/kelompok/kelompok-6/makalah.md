@@ -78,7 +78,7 @@ KDE Plasma merupakan proyek perangkat lunak yang terdiri dari lingkungan desktop
 
 1. Pertama-tama pastinya kita akan masuk ke Arch Linux terlebih dahulu, Jangan lupa untuk selalu memeriksa updetan terbaru
 
-``` sudo pacman -syyu ```
+``` sudo pacman -Syyu ```
 
 2. Lalu kemudian akan melakukan installasi KDE Plasma
 
