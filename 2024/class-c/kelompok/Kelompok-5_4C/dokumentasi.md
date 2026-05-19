@@ -188,12 +188,12 @@ Gunakan Tombol ini untuk navigasi (Geser kanan & Kiri)
 Masukan angka 4G, 512M Dan sisa ruang partisi untuk root. Contoh dari 50G Setelah di partisi menjadi sisa 44,3G Maka masukan 44,5G
 <img width="1599" height="899" alt="WhatsApp Image 2026-05-14 at 9 53 02 PM" src="https://github.com/user-attachments/assets/d06d0474-f66a-4787-8d0b-6ac699c4293f" />
 
-Sebelum enter bagian write, pastikan untuk partisinya sudah di setting type nya (512M Untuk EFI, 4G Untuk Swap dan sisa ruang partisi untuk root)
+Sebelum enter bagian write, pastikan untuk partisinya sudah di setting type nya (Boot = 512M Untuk EFI System, Swap = 4G Untuk Linux Swap dan sisa ruang partisi (Contoh untuk free disk 50G Sudah kepakai untuk EFI & Swap yaitu 5,7G. Maka untuk sisanya yaitu 44.3G) untuk Root yaitu Linux File System)
 <img width="1599" height="899" alt="WhatsApp Image 2026-05-14 at 9 53 54 PM" src="https://github.com/user-attachments/assets/c077b472-9fd4-44a1-8d90-2579adcb9264" />
 
 Setelah write, geser ke opsi quit dan enter
 
- Struktur Partisi yang Disarankan
+Struktur Partisi yang Disarankan
 
 UEFI
 
@@ -204,8 +204,98 @@ UEFI
 | `/` | Root system |
 
 Selajutnya masuk ke tahap formating yaitu format partisi, swapping dan format EFI
+
 Catatan : Partisi harus sesuai dengan type yang sudah di write tadi. jika sampai salah, dapat menyebabkan data di partisi hilang karena datanya telah timpa (salah satu nya Kehilangan OS). Untuk memastikan kembali partisi untuk digunakan agar tidak salah, ketik lslbk. kemudian lihat dan ingat semua type partisinya.
 
 <img width="1599" height="899" alt="WhatsApp Image 2026-05-14 at 9 38 07 PM (2)" src="https://github.com/user-attachments/assets/d55b8c13-a684-42ed-9199-0b69556888f5" />
-Seperti disini contohnya untuk yang Format EFI Yaitu yang ukuran 512M, Swap 4G Dan Root 44.3G
+Contohnya seperti ini untuk Partisi nvme0n1p5 dengan size 512M (EFI), partisi nvme0n1p6 dengan size 4G (SWAP) Dan partisi nvme0n1p7 dengan size 44.3G yaitu sisa ruang kosong dari Partisi 50G (root)
+
+Format Partisi (root)
+
+```bash
+mkfs.ext4 /dev/nvme0n1p7
+```
+
+Penjelasan
+Membuat filesystem ext4 pada partisi root.
+
+---
+
+Membuat Swap
+
+```bash
+mkswap /dev/nvme0n1p6
+```
+
+Aktifkan swap:
+
+```bash
+swapon /dev/swap_partition
+```
+
+Penjelasan
+Swap digunakan sebagai memori cadangan ketika RAM penuh.
+
+---
+
+Format EFI Partition
+
+```bash
+mkfs.fat -F 32 /dev/efi_system_partition
+```
+
+Penjelasan
+EFI partition harus menggunakan FAT32.
+
+
+Mount Filesystem
+
+Sebelum masuk ke tahap penginstalan, partisi terlebih dahulu harus dipasang (Mount)
+
+Mount root:
+
+```bash
+mount /dev/root_partition /mnt
+```
+
+Mount EFI:
+
+```bash
+mount --mkdir /dev/efi_system_partition /mnt/boot
+
+catatan : untuk root_partition & efi_System_partition disesuaikan dengan nama partisi yang tadi (Contoh, tadi Partisi root yaitu nvme0n1p7 dan EFI nvme0n1p5, maka perintahnya menjadi mount /dev/nvme0n1p7 dan mount --mkdir /dev/nvme0n1p5)
+
+setelah mount kita masuk ke dalam tahap penginstalan dengan perintah :
+Instalasi Sistem Dasar
+
+```bash
+pacstrap -K /mnt base linux linux-firmware base base-devel iwd
+```
+
+Penjelasan
+
+- `base` → paket inti sistem
+- `linux` → kernel Linux
+- `linux-firmware` → firmware hardware
+- `iwd` → Mengakses jaringan setelah penginstalan
+   
+---
+
+Tunggu penginstalan hingga selesai, Kecepatan bergantung pada internet. Disarankan menggunakan wifi. meski bisa dengan hotspot HP, Tetapi prosesnya memakan waktu yang lama daripada menggunakan WIFI.
+
+setelah proses install selesai, buat fstab nya untuk menentukan partisi mana yang otomatis dimount saat boot.
+
+Membuat fstab
+
+```bash
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+
+
+
+
+
+
+
 
