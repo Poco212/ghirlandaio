@@ -125,4 +125,4 @@ sudo pacman -S kitty
 
 Tampilan Terminal Kitty
 
-<img width="4032" height="3024" alt="IMG_1717" src="https://github.com/user-attachments/assets/87d55a1a-a3ec-49b4-a80f-de2feda352e1" />
+<img width="1448" height="1086" alt="IMG_1720" src="https://github.com/user-attachments/assets/39f667f1-b8df-41e1-9f42-9f054e02e7c8" />
