@@ -1,3 +1,5 @@
+## **Dokumentasi Penginstalan Linux**
+
 <img width="1600" height="1204" alt="WhatsApp Image 2026-05-23 at 22 58 29" src="https://github.com/user-attachments/assets/1c9ff46f-9a0c-4d28-82f5-08747e21f991" />
 
 <img width="1204" height="1600" alt="WhatsApp Image 2026-05-23 at 22 54 41" src="https://github.com/user-attachments/assets/ee55b5cb-0922-4389-b421-552404fe3c3c" />
